@@ -1,12 +1,26 @@
-### 🔹 [Legal-Chatbot](https://github.com/mohsinkhan85090/Legal-Chatbot)  
-AI-powered legal advisor designed to help users instantly understand their rights under **Indian laws**.  
-Built with **Flask**, **Firestore**, and **RAG (Gemini API)**, the chatbot can retrieve and explain relevant **IPC sections** and other legal provisions based on user queries or real-life scenarios.  
+# ⚖️ Legal-Chatbot
 
-**Key Features:**  
-- ⚖️ **Instant Legal Guidance** – Get relevant IPC sections and rights explained in plain language.  
-- 🔍 **RAG Integration** – Combines a custom legal knowledge base with the **Gemini API** for accurate responses.  
-- 💾 **Firestore Backend** – Stores and manages legal data efficiently.  
-- 🌐 **User-Friendly Web Interface** – Simple HTML & Tailwind CSS UI for smooth interactions.  
-- 📜 **Scenario-Based Queries** – Ask questions like *"What are my rights if detained by police?"* and get detailed answers.  
+An AI-powered legal advisor for **Indian laws**, designed to instantly provide users with relevant IPC sections, rights, and legal guidance based on real-world scenarios.  
+Built with **Flask**, **Firestore**, and **RAG (Gemini API)** to ensure accurate, fast, and context-aware legal advice.
 
-`Python` | `Flask` | `Firestore` | `AI` | `RAG` | `Tailwind CSS`
+---
+
+## 🚀 Features
+
+- **Instant Legal Guidance** – Quickly retrieve IPC sections and their explanations.
+- **Scenario-Based Queries** – Ask real-life legal questions (e.g., *"What are my rights if detained by police?"*).
+- **RAG Integration** – Combines custom legal datasets with the **Gemini API** for precise answers.
+- **Firestore Backend** – Efficient storage and retrieval of legal data.
+- **Clean Web Interface** – Built using HTML and Tailwind CSS for a smooth user experience.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend:** Python, Flask  
+- **Frontend:** HTML, Tailwind CSS  
+- **Database:** Google Firestore  
+- **AI Model:** Gemini API with Retrieval-Augmented Generation (RAG)  
+- **Other:** REST API, JSON
+
+---
