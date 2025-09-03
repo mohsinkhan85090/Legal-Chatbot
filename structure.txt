@@ -1,0 +1,49 @@
+nyayabot/
+│
+├── backend/                               # Backend (Flask/FastAPI server + AI logic)
+│   ├── app.py                             # Main server entry point
+│   ├── config.py                          # Configurations (API keys, DB URLs, secrets)
+│   ├── models/                            # AI/ML logic
+│   │   ├── embedding_model.py             # Handles text embeddings + vector DB search
+│   │   ├── llm_generator.py               # LLM-based response generator
+│   │   └── rule_engine.py                 # Rule-based fallback (keyword/pattern matching)
+│   ├── routes/                            # API endpoints
+│   │   ├── chat.py                        # /chat endpoint for chatbot queries
+│   │   └── authen.py                        # Authentication (login/signup, optional)
+│   ├── utils/                             # Helper functions
+│   │   ├── preprocessing.py               # Text cleaning, tokenization, chunking
+│   │   └── response_formatter.py          # Format chatbot replies into structured JSON
+│   └── data/                              # Knowledge base (laws, FAQs, legal acts)
+│       ├── ipc.json                       # IPC (Indian Penal Code) sections
+│       ├── crpc.json                      # CrPC (Criminal Procedure Code) sections
+│       ├── consumer.json                  # Consumer Protection Act
+│       └── faqs.json                      # Curated FAQs for quick lookup
+│
+├── frontend/                              # Web frontend (React)
+│   ├── public/                            # Static assets (logo, favicon, index.html)
+│   ├── src/                               # React source code
+│   │   ├── components/                    # Reusable UI components
+│   │   │   ├── ChatBox.jsx                # Main chat container
+│   │   │   ├── MessageBubble.jsx          # UI for chat messages
+│   │   │   └── Navbar.jsx                 # Navigation bar
+│   │   ├── pages/                         # Page-level components
+│   │   │   └── Home.jsx                   # Homepage with chatbot
+│   │   ├── App.jsx                        # Root React app
+│   │   └── index.js                       # Entry point for React app
+│   └── package.json                       # Frontend dependencies & scripts
+│
+├── mobile/ (optional later)               # React Native app (future mobile version)
+│
+├── docs/                                  # Documentation
+│   ├── README.md                          # Project overview & setup guide
+│   ├── API_DOCS.md                        # API documentation
+│   └── DATA_SCHEMA.md                     # JSON/DB schema for legal knowledge base
+│
+├── tests/                                 # Automated tests
+│   ├── test_backend.py                    # Unit tests for backend
+│   └── test_frontend.js                   # Unit tests for frontend
+│
+├── requirements.txt                       # Python backend dependencies
+├── package.json                           # Node dependencies (frontend or fullstack)
+├── .env                                   # Environment variables (ignored in git)
+└── run.sh                                 # Script to run backend + frontend together
