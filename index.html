@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚖️ LegalChatBot</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts for Calligraphy -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* Background video */
+    video#bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.6);
+    }
+
+    /* Calligraphic heading */
+    .heading-left {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      color: #D4A017; /* Mustard-gold */
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+      z-index: 10;
+    }
+
+    /* Chat container on right */
+    .chat-container {
+      position: absolute;
+      top: 50px;
+      right: 20px;
+      width: 350px;
+      height: 600px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 10;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Chat header */
+    .chat-header {
+      background: linear-gradient(to right, #4a5568, #2b6cb0);
+      color: white;
+      font-weight: bold;
+      padding: 15px;
+      font-size: 1.2rem;
+    }
+
+    /* Chat messages */
+    #chat-box {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chat-bubble {
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .user-bubble {
+      align-self: flex-end;
+      background: #2b6cb0;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 20px 20px 0 20px;
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+
+    .bot-bubble {
+      align-self: flex-start;
+      background: #e2e8f0;
+      color: #1a202c;
+      padding: 10px 15px;
+      border-radius: 20px 20px 20px 0;
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+
+    /* Input area */
+    .chat-input {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #cbd5e0;
+      background: white;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #cbd5e0;
+      outline: none;
+    }
+
+    .chat-input button {
+      margin-left: 10px;
+      padding: 10px 15px;
+      border-radius: 20px;
+      background-color: #2b6cb0;
+      color: white;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .chat-input button:hover {
+      background-color: #1e40af;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video id="bg-video" autoplay muted loop>
+    <source src="assets.mp4" type="video/mp4">
+  </video>
+
+  <!-- Calligraphic heading -->
+  <div class="heading-left">LegalChatBot</div>
+
+  <!-- Chat container on right -->
+  <div class="chat-container">
+    <div class="chat-header">Chat</div>
+    <div id="chat-box"></div>
+    <div class="chat-input">
+      <input id="user-input" type="text" placeholder="Ask a legal question...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function appendMessage(sender, text) {
+      const chatBox = document.getElementById("chat-box");
+      const bubble = document.createElement("div");
+      bubble.className = sender === "user" ? "user-bubble chat-bubble" : "bot-bubble chat-bubble";
+      bubble.textContent = text;
+      chatBox.appendChild(bubble);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("user-input");
+      const message = input.value.trim();
+      if (!message) return;
+
+      appendMessage("user", message);
+
+      fetch("http://127.0.0.1:5000/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: message })
+      })
+      .then(response => response.json())
+      .then(data => appendMessage("bot", data.answer))
+      .catch(() => appendMessage("bot", "Oops! Something went wrong."));
+
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>

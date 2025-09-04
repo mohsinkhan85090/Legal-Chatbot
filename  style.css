@@ -1,0 +1,33 @@
+/* Gavel cursor */
+body {
+    cursor: url('gavel.png'), auto;
+  }
+  
+  /* Chat bubbles */
+  .user-msg { text-align: right; }
+  .bot-msg { text-align: left; }
+  
+  .user-msg .msg {
+    display: inline-block;
+    background-color: #3b82f6; /* Tailwind blue-500 */
+    color: white;
+    padding: 10px 14px;
+    border-radius: 20px 20px 0 20px;
+    max-width: 70%;
+    word-wrap: break-word;
+  }
+  
+  .bot-msg .msg {
+    display: inline-block;
+    background-color: #e5e7eb; /* Tailwind gray-200 */
+    color: #111827;
+    padding: 10px 14px;
+    border-radius: 20px 20px 20px 0;
+    max-width: 70%;
+    word-wrap: break-word;
+  }
+  
+  /* Scrollbar styling */
+  #chat-box::-webkit-scrollbar { width: 6px; }
+  #chat-box::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.3); border-radius: 3px; }
+  
