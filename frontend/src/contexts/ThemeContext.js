@@ -17,8 +17,12 @@ export const ThemeProvider = ({ children }) => {
     if (savedTheme) {
       return savedTheme;
     }
-    // Check system preference
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    // Check system preference - with fallback for testing environments
+    try {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    } catch (e) {
+      return 'light'; // Fallback for test environment
+    }
   });
 
   useEffect(() => {
