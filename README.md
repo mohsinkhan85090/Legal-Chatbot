@@ -24,3 +24,54 @@ Built with **Flask**, **Firestore**, and **RAG (Gemini API)** to ensure accurate
 - **Other:** REST API, JSON
 
 ---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.7 or higher
+- pip (Python package manager)
+
+### Installation & Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/mohsinkhan85090/Legal-Chatbot.git
+   cd Legal-Chatbot
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Start the backend server**
+   ```bash
+   ./run.sh
+   ```
+   Or manually:
+   ```bash
+   cd backend
+   python app.py
+   ```
+
+4. **Open the frontend**
+   - Open `index.html` in your web browser
+   - Or use a local server:
+     ```bash
+     python -m http.server 8000
+     ```
+   - Then visit `http://localhost:8000`
+
+### Usage
+1. The Flask backend runs on `http://127.0.0.1:5000`
+2. Open the chatbot interface in your browser
+3. Ask legal questions in the chat interface
+4. Get instant responses about Indian laws
+
+### Testing
+```bash
+cd test
+python test_backend.py
+```
+
+---
