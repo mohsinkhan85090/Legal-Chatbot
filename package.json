@@ -1,0 +1,10 @@
+{
+  "name": "legal-chatbot",
+  "version": "1.0.0",
+  "description": "AI-powered legal advisor for Indian laws",
+  "scripts": {
+    "start": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "install-deps": "cd frontend && npm install"
+  }
+}
